@@ -8,6 +8,13 @@ We use the dataset released by Valentini et. al. in our experiments. It consists
 - The training set explores 40 different noisy conditions with 10 types of noise and 4 SNR each (15, 10, 5, and 0 dB). 
 - The test set comprises 20 different noisy conditions with 5 types of noise and 4 SNR each (17.5, 12.5, 7.5, and 2.5 dB). 
 - The train and test set contains 11572 and 824 utterances, respectively.
+
+### Preprocessing
+- The input signals are downsampled from 48kHz to 16kHz and applied a pre-emphasis of 0.95. 64-channel gammatone features are extracted using 20ms Hamming window with 50% (10 ms) overlap with adjacent frames. 
+- The log-spectrum is computed from the gammatone features. 
+- We experiment the effect of normalisation (log-spectrum values restricted between 0-1) and standardisation i.e., mean normalisation on the model performance, and establish that normalisation is more preferable. 
+- Each audio spectrum is further subdivided into 64\*64 log-patches. 
+- These patches are created using a sliding window with 50% overlap during training and no overlap for test set.
 ## Architecture details
 
 <div align="center">
@@ -17,7 +24,13 @@ We use the dataset released by Valentini et. al. in our experiments. It consists
 </div>  
 <p align="center"><b>Fig. 1: Encoder-decoder architecture of CNN. The same architecture is used for the G network of CNN-GAN </b></p>
 
+**CNN Architecture:** We set up our network with an architecture similar to encoder-decoder models. The encoding stage consists of 4 layers of 64, 128, 256 and 512 filter depth. Each filter has a kernel size of 4 with stride length as 2. This encoder learns the spatial downsampling while extracting the low-dimensional features which is structured as a bottleneck with 100 units. The decoder is the transpose of encoder as it aims to project the learnt features to original space. It consists of filters of size 512, 256, 128, and 64 in each layer with kernel size 4 and stride length of 2.
+
+**CNN-GAN Architecture:** The GAN consists of two networks: Generator (G) and Discriminator (D). The G is trained to learn the TF mask and the discriminator tries to distinguish between enhanced and clean spectrograms. We model G with similar architecture as CNN, while D has six layers of filter size of [64, 128, 256, 512, 64, 1] dimension with kernel size 4 and stride length of 2. In all experiments, we train the model for 25 epochs with Adam optimizer for CNN and G network, and SGD for D network.
+
 ## Results
+
+<p align="center"><b>Table 1: Comparison between implicit and explicit mask estimation for CNN and CNN-GAN</b></p>
 
 <div align="center">
   
@@ -32,16 +45,16 @@ We use the dataset released by Valentini et. al. in our experiments. It consists
 
 </div>
 
-<p align="center"><b>Table 1: Comparison between implicit and explicit mask estimation for CNN and CNN-GAN</b></p>
 
 <div align="center">
   
   ![Results](Images/Results.png)
 </div>
+
 <p align = "center"><b>Fig. 2: Comparison between implicit and explicit mask estimation for CNN and CNN-GAN</b></p>
 
 
-
+<p align="center"><b>Table 2: Comparison between CNN and CNN-GAN mask based estimation</b></p>
 
 <div align="center">
   
@@ -56,7 +69,7 @@ We use the dataset released by Valentini et. al. in our experiments. It consists
   
 </div>
 
-<p align="center"><b>Table 2: Comparison between CNN and CNN-GAN mask based estimation</b></p>
+<p align="center"><b>Table 3: Effect of Activation for CNN and CNN-GAN</b></p>
 
 <div align="center">
   
@@ -71,16 +84,24 @@ We use the dataset released by Valentini et. al. in our experiments. It consists
   
 </div>
 
-<p align="center"><b>Table 3: Effect of Activation for CNN and CNN-GAN</b></p>
+
 
 <div align="center">
 
   ![Predictions](Images/Predictions.PNG)
   
 </div>
+
 <p align="center"><b>Fig. 3: Predictions of implemented models</b></p>
+
+We observed that removing the activation function from the last layer  which predicts the mask for both our explicit CNN and explicit GAN, aided in generating a more flexible mask which can take up values in the desired ranges without restriction, hence, making our model a better pragmatic choice. Also, the experimentation of using both standardised data and normalised data showed that using normalised data yields better results as shown in table 2. Furthermore, we established that the usage of masks (explicit models) yields significantly better results than the implicit models which directly predicts the spectrogram.
 
 ## System Information
 - Python >= 3.0
 - Pytorch >= 2.0
 - Tensorflow >=2.0
+
+## References
+N. Shah, H. A. Patil and M. H. Soni,*"Time-Frequency Mask-based Speech Enhancement using Convolutional Generative Adversarial Network,"* 2018 Asia-Pacific Signal and Information Processing Association Annual Summit and Conference (APSIPA ASC), 2018, pp. 1246-1251, doi: 10.23919/APSIPA.2018.8659692.
+
+M. H. Soni, N. Shah and H. A. Patil, *"Time-Frequency Masking Based Speech Enhancement Using Generative Adversarial Network,"* 2018 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), 2018, pp. 5039-5043,doi:10.1109/ICASSP.2018.8462068.
