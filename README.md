@@ -47,8 +47,7 @@ We use the dataset released by Valentini et. al. in our experiments. It consists
 
 
 <div align="center">
-  
-  ![Results](Images/Results.png)
+    <img height = 350px src="Images/Results.png">
 </div>
 
 <p align = "center"><b>Fig. 2: Comparison between implicit and explicit mask estimation for CNN and CNN-GAN</b></p>
@@ -87,9 +86,7 @@ We use the dataset released by Valentini et. al. in our experiments. It consists
 
 
 <div align="center">
-
-  ![Predictions](Images/Predictions.PNG)
-  
+  <img height = 500px src= "Images/Predictions.PNG">
 </div>
 
 <p align="center"><b>Fig. 3: Predictions of implemented models</b></p>
