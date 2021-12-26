@@ -10,6 +10,10 @@ We use the dataset released by Valentini et. al. in our experiments. It consists
 - The train and test set contains 11572 and 824 utterances, respectively.
 ## Architecture details
 
+<div align="center">
+  ![Architecture](Architecture.png)
+</div>  
+
 ## Results
 
 <div align="center">
@@ -66,6 +70,12 @@ We use the dataset released by Valentini et. al. in our experiments. It consists
 
 <p align="center"><b>Table 3: Effect of Activation for CNN and CNN-GAN</b></p>
 
+<div align="center">
+
+  ![Predictions](Predictions.PNG)
+  
+</div>
+<p align="center"><b>Fig 2: Predictions of implemented models</b></p>
 
 ## System Information
 - Python >= 3.0
