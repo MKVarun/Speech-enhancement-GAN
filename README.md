@@ -11,8 +11,11 @@ We use the dataset released by Valentini et. al. in our experiments. It consists
 ## Architecture details
 
 <div align="center">
-  ![Architecture](Architecture.png)
+  
+  ![Architecture](Images/Architecture.PNG)
+  
 </div>  
+<p align="center"><b>Fig. 1: Encoder-decoder architecture of CNN. The same architecture is used for the G network of CNN-GAN </b></p>
 
 ## Results
 
@@ -33,9 +36,9 @@ We use the dataset released by Valentini et. al. in our experiments. It consists
 
 <div align="center">
   
-  ![Results](Results.png)
+  ![Results](Images/Results.png)
 </div>
-<p align = "center"><b>Fig. 1: Comparison between implicit and explicit mask estimation for CNN and CNN-GAN</b></p>
+<p align = "center"><b>Fig. 2: Comparison between implicit and explicit mask estimation for CNN and CNN-GAN</b></p>
 
 
 
@@ -72,10 +75,10 @@ We use the dataset released by Valentini et. al. in our experiments. It consists
 
 <div align="center">
 
-  ![Predictions](Predictions.PNG)
+  ![Predictions](Images/Predictions.PNG)
   
 </div>
-<p align="center"><b>Fig 2: Predictions of implemented models</b></p>
+<p align="center"><b>Fig. 3: Predictions of implemented models</b></p>
 
 ## System Information
 - Python >= 3.0
