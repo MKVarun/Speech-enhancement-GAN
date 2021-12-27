@@ -1,4 +1,4 @@
-# Speech-enhancement using GAN
+# Speech-enhancement using CNN-GAN
 We develop a time-freqency mask based convolutional generative adversarial (CNN-GAN) network for speech enhancement. Further, we compare its performance with the convolutional neural network based speech enhancement model and non-explicit mask based CNN-GAN based models. Performance evaluation metrics establish the superiority of explicit mask-based CNN-GAN over its counterparts.
 
 ## Dataset
