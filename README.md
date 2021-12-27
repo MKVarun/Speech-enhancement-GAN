@@ -29,10 +29,22 @@ We use the dataset released by Valentini et. al. in our experiments. It consists
 
 **CNN-GAN Architecture:** The GAN consists of two networks: Generator (G) and Discriminator (D). The G is trained to learn the TF mask and the discriminator tries to distinguish between enhanced and clean spectrograms. We model G with similar architecture as CNN, while D has six layers of filter size of [64, 128, 256, 512, 64, 1] dimension with kernel size 4 and stride length of 2. In all experiments, we train the model for 25 epochs with Adam optimizer for CNN and G network, and SGD for D network. The D network minimizes the binary cross-entropy (BCE) loss and the G network minimizes the MSE error between enhanced and clean log-spectrum.
 
+<p float="left" align="center">
+  <img src="Images/Implicit.jpg" width="250" height = "350"/>
+  <img src="Images/Explicit.jpg" width="250" height = "350"/> 
+<p align="center"><b>Fig. 2: Flowchart of implemented algorithms</b></p>
+
+</p>
+
+**Implicit masking:** We implemented both CNN and CNN-GAN models to implicitly predict the mask. As shown in fig. 2, in implicit masking method the spectrogram is directly predicted by the model while the mask is implicit.
+
+**Explicit masking:** We also implemented our CNN and CNN-models to explicitly predict the mask. In this case, the model outputs the mask which is then multiplied with the input noisy spectrogram to get the final clean predicted spectrogram as shown in fig. 2.
+
 ## **Evaluation**
 The predicted masks for the testing set were stitched back together from 64\*64 pathces and .wav audio files were reconstructed back in MATLAB from the predicted gammatone spectrograms. The model was then evaluated using the CSIG, CBAK, COVL, PESQ and STOI speech metrics using the predicted audio files and clean audio files.
 
 ## Results
+### Explicit masking vs Implicit masking method
 
 <p align="center"><b>Table 1: Comparison between implicit and explicit mask estimation for CNN and CNN-GAN</b></p>
 
@@ -54,8 +66,11 @@ The predicted masks for the testing set were stitched back together from 64\*64 
     <img height = 350px src="Images/Results.png">
 </div>
 
-<p align = "center"><b>Fig. 2: Comparison between implicit and explicit mask estimation for CNN and CNN-GAN</b></p>
+<p align = "center"><b>Fig. 3: Comparison between implicit and explicit mask estimation for CNN and CNN-GAN</b></p>
 
+We compared the performance of implicit and explicit masking based methods for speech enhancement. We observed that explicit mask based method, in which the mask is predicted explicitly by the deep learing model, showed superior results as summarized in table 1. Thus, the usage of masks (explicit models) for speech enhancement is a feasible method and yields significantly better results than the implicit models which directly predicts the spectrogram.
+
+### CNN vs CNN-GAN estimation
 
 <p align="center"><b>Table 2: Comparison between CNN and CNN-GAN mask based estimation</b></p>
 
@@ -72,6 +87,11 @@ The predicted masks for the testing set were stitched back together from 64\*64 
   
 </div>
 
+
+We evaluated the effect of preprocessing (Normalisation vs standardisation of gammatone spectrograms) on model results. Results summarized in table 2 shows that normalisation of data yields a better performances than standardising. Also, for CNN-GAN we observed usin an SGD optimizer for the discriminator network helped to converge the model faste and yielded a better performance.
+
+### Effects of activation function
+
 <p align="center"><b>Table 3: Effect of Activation for CNN and CNN-GAN</b></p>
 
 <div align="center">
@@ -87,15 +107,13 @@ The predicted masks for the testing set were stitched back together from 64\*64 
   
 </div>
 
-
+We observed that removing the activation function from the last layer, which predicts the mask for both our explicit CNN and explicit GAN, improved cleaned speech quality as shown in table 3. This is because a linear activation aids in generating a more flexible mask which can take up values in the desired ranges without restriction.
 
 <div align="center">
   <img height = 500px src= "Images/Predictions.PNG">
 </div>
 
-<p align="center"><b>Fig. 3: Predictions of implemented models</b></p>
-
-We observed that removing the activation function from the last layer  which predicts the mask for both our explicit CNN and explicit GAN, aided in generating a more flexible mask which can take up values in the desired ranges without restriction, hence, making our model a better pragmatic choice. Also, the experimentation of using both standardised data and normalised data showed that using normalised data yields better results as shown in table 2. Furthermore, we established that the usage of masks (explicit models) yields significantly better results than the implicit models which directly predicts the spectrogram.
+<p align="center"><b>Fig. 4: Predictions of implemented models</b></p> 
 
 ## System Information
 - Python >= 3.0
