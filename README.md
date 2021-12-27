@@ -90,7 +90,7 @@ We compared the performance of implicit and explicit masking based methods for s
 
 We evaluated the effect of preprocessing (Normalisation vs standardisation of gammatone spectrograms) on model results. Results summarized in table 2 shows that normalisation of data yields a better performances than standardising. Also, for CNN-GAN we observed usin an SGD optimizer for the discriminator network helped to converge the model faste and yielded a better performance.
 
-### Effects of activation function
+### Effect of activation function
 
 <p align="center"><b>Table 3: Effect of Activation for CNN and CNN-GAN</b></p>
 
