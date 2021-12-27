@@ -40,12 +40,12 @@ The predicted masks for the testing set were stitched back together from 64\*64 
   
 |Metric| Noisy| CNN|CNN| CNN-GAN|CNN-GAN|
 |------|------|----|------|--------|-------|
-|||Implicit| Explicit| Implicit| Explicit|
-|CSIG |3.35 |2.84 |2.92 |3.18 |3.50|
-|CBAK |2.44 |2.26 |2.43 |2.64 |2.84|
-|COVL |2.63 |2.08 |2.35 |2.59 |2.90|
-|PESQ |1.97 |1.40 |1.83 |2.05 |2.34|
-|STOI |0.91 |0.85 |0.86 |0.89 |0.91|
+|||**Implicit**| **Explicit**| **Implicit**| **Explicit**|
+|CSIG |3.35 |2.84 |2.92 |3.18 |**3.50**|
+|CBAK |2.44 |2.26 |2.43 |2.64 |**2.84**|
+|COVL |2.63 |2.08 |2.35 |2.59 |**2.90**|
+|PESQ |1.97 |1.40 |1.83 |2.05 |**2.34**|
+|STOI |0.91 |0.85 |0.86 |0.89 |**0.91**|
 
 </div>
 
@@ -63,12 +63,12 @@ The predicted masks for the testing set were stitched back together from 64\*64 
   
 |Metric |Noisy |CNN |CNN|CNN-GAN|CNN-GAN|
 |:----:|:----:|:----:|:----:|:----:|:----:|
-|||Normalised Input|Standardised Input|Adam| SGD|
-|CSIG |3.35 |2.84 |2.24 |1.01 |3.50|
-|CBAK |2.44 |2.26 |2.17 |1.93 |2.84|
-|COVL |2.63 |2.08 |1.95 |1.06 |2.90|
-|PESQ |1.97 |1.40 |1.80 |1.46 |2.34|
-|STOI |0.91 |0.85 |0.80 |0.71 |0.91|
+|||**Normalised Input**|**Standardised Input**|**Adam**| **SGD**|
+|CSIG |3.35 |**2.84** |2.24 |1.01 | **3.50**|
+|CBAK |2.44 |**2.26** |2.17 |1.93 | **2.84**|
+|COVL |2.63 |**2.08** |1.95 |1.06 | **2.90**|
+|PESQ |1.97 |**1.40** |1.80 |1.46 | **2.34**|
+|STOI |0.91 |**0.85** |0.80 |0.71 | **0.91**|
   
 </div>
 
@@ -78,12 +78,12 @@ The predicted masks for the testing set were stitched back together from 64\*64 
   
 |Metric |Noisy |CNN |CNN|CNN-GAN|CNN-GAN|
 |:----:|:----:|:----:|:----:|:----:|:----:|
-|||Linear| Sigmoid| Linear| Sigmoid|
-|CSIG |3.35 |2.84 |2.06 |3.34 |2.43|
-|CBAK |2.44 |2.26 |2.16 |2.66 |1.88|
-|COVL |2.63 |2.08 |1.80 |2.65 |1.84|
-|PESQ |1.97 |1.40 |1.69 |2.02 |1.37|
-|STOI |0.91 |0.85 |0.81 |0.91 |0.75|
+|||**Linear**| **Sigmoid**| **Linear**| **Sigmoid**|
+|CSIG |3.35 |**2.84** |2.06 |**3.34** |2.43|
+|CBAK |2.44 |**2.26** |2.16 |**2.66** |1.88|
+|COVL |2.63 |**2.08** |1.80 |**2.65** |1.84|
+|PESQ |1.97 |**1.40** |1.69 |**2.02** |1.37|
+|STOI |0.91 |**0.85** |0.81 |**0.91** |0.75|
   
 </div>
 
