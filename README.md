@@ -70,7 +70,7 @@ The predicted masks for the testing set were stitched back together from 64\*64 
 
 We compared the performance of implicit and explicit masking based methods for speech enhancement. We observed that explicit mask based method, in which the mask is predicted explicitly by the deep learing model, showed superior results as summarized in table 1. Thus, the usage of masks (explicit models) for speech enhancement is a feasible method and yields significantly better results than the implicit models which directly predicts the spectrogram.
 
-### CNN vs CNN-GAN estimation
+### Estimation using CNN vs CNN-GAN 
 
 <p align="center"><b>Table 2: Comparison between CNN and CNN-GAN mask based estimation</b></p>
 
@@ -90,7 +90,7 @@ We compared the performance of implicit and explicit masking based methods for s
 
 We evaluated the effect of preprocessing (Normalisation vs standardisation of gammatone spectrograms) on model results. Results summarized in table 2 shows that normalisation of data yields a better performances than standardising. Also, for CNN-GAN we observed usin an SGD optimizer for the discriminator network helped to converge the model faste and yielded a better performance.
 
-### Effect of activation function
+### Effects of activation function
 
 <p align="center"><b>Table 3: Effect of Activation for CNN and CNN-GAN</b></p>
 
