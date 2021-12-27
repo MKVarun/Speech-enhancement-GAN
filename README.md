@@ -15,6 +15,7 @@ We use the dataset released by Valentini et. al. in our experiments. It consists
 - We experiment the effect of normalisation (log-spectrum values restricted between 0-1) and standardisation i.e., mean normalisation on the model performance, and establish that normalisation is more preferable. 
 - Each audio spectrum is further subdivided into 64\*64 log-patches. 
 - These patches are created using a sliding window with 50% overlap during training and no overlap for test set.
+
 ## Architecture details
 
 <div align="center">
@@ -26,10 +27,10 @@ We use the dataset released by Valentini et. al. in our experiments. It consists
 
 **CNN Architecture:** We set up our network with an architecture similar to encoder-decoder models. The encoding stage consists of 4 layers of 64, 128, 256 and 512 filter depth. Each filter has a kernel size of 4 with stride length as 2. This encoder learns the spatial downsampling while extracting the low-dimensional features which is structured as a bottleneck with 100 units. The decoder is the transpose of encoder as it aims to project the learnt features to original space. It consists of filters of size 512, 256, 128, and 64 in each layer with kernel size 4 and stride length of 2. In all the experiments, we train the model for 50 epochs using Adam optimizer and Mean square error (MSE) loss.
 
-**CNN-GAN Architecture:** The GAN consists of two networks: Generator (G) and Discriminator (D). The G is trained to learn the TF mask and the discriminator tries to distinguish between enhanced and clean spectrograms. We model G with similar architecture as CNN, while D has six layers of filter size of [64, 128, 256, 512, 64, 1] dimension with kernel size 4 and stride length of 2. In all experiments, we train the model for 25 epochs with Adam optimizer for CNN and G network, and SGD for D network. The D network using the Binary cross-entropy loss and the G network minimizes the MSE error between enhanced and clean log-spectrum.
+**CNN-GAN Architecture:** The GAN consists of two networks: Generator (G) and Discriminator (D). The G is trained to learn the TF mask and the discriminator tries to distinguish between enhanced and clean spectrograms. We model G with similar architecture as CNN, while D has six layers of filter size of [64, 128, 256, 512, 64, 1] dimension with kernel size 4 and stride length of 2. In all experiments, we train the model for 25 epochs with Adam optimizer for CNN and G network, and SGD for D network. The D network minimizes the binary cross-entropy (BCE) loss and the G network minimizes the MSE error between enhanced and clean log-spectrum.
 
 ## **Evaluation**
-The predicted masks for the testing set were stitched together and .wav audio files were reconstructed back in MATLAB from the predicted gammatone spectrograms. The model was evaluated using the CSIG, CBAK, COVL, PESQ and STOI speech metrics.
+The predicted masks for the testing set were stitched back together from 64\*64 pathces and .wav audio files were reconstructed back in MATLAB from the predicted gammatone spectrograms. The model was then evaluated using the CSIG, CBAK, COVL, PESQ and STOI speech metrics using the predicted audio files and clean audio files.
 
 ## Results
 
